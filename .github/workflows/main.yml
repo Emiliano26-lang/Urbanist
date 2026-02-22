@@ -24,10 +24,10 @@ jobs:
           pip install -r requirements.txt
           pip install fonttools ufo2ft
 
-      - name: Validate Greek glyph coverage
-        run: python scripts/validate_greek.py
-
       - name: Build fonts
+        run: make build
+
+      - name: Validate Greek glyph coverage
         run: python scripts/validate_greek.py
 
       - name: Upload artifacts
