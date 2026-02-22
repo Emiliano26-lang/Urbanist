@@ -1,20 +1,21 @@
 import os, sys
 from fontTools.ttLib import TTFont
 
-possible_paths = [
-    "fonts/ttf/Urbanist-Regular.ttf",
-    "fonts/otf/Urbanist-Regular.otf",
-    "fonts/variable/Urbanist[wght].ttf"
-]
-
+search_dirs = ["fonts/ttf", "fonts/otf", "fonts/variable"]
 font_path = None
-for path in possible_paths:
-    if os.path.exists(path):
-        font_path = path
+
+for d in search_dirs:
+    if not os.path.exists(d):
+        continue
+    for f in os.listdir(d):
+        if f.startswith("Urbanist") and f.endswith((".ttf", ".otf")):
+            font_path = os.path.join(d, f)
+            break
+    if font_path:
         break
 
 if not font_path:
-    print("❌ No built font found in expected paths:", possible_paths)
+    print("❌ No Urbanist font found in:", search_dirs)
     sys.exit(1)
 
 print(f"✅ Found font at {font_path}")
