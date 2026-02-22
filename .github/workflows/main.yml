@@ -1,0 +1,37 @@
+name: Build Greek Typeface
+
+on:
+  push:
+    paths:
+      - "sources/**"
+      - ".github/workflows/build-greek.yml"
+  pull_request:
+
+jobs:
+  build-greek:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install fonttools ufo2ft
+
+      - name: Validate Greek glyph coverage
+        run: python scripts/validate_greek.py
+
+      - name: Build fonts
+        run: make build
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: greek-fonts
+          path: fonts/
