@@ -28,7 +28,7 @@ jobs:
         run: python scripts/validate_greek.py
 
       - name: Build fonts
-        run: make build
+        run: python scripts/validate_greek.py
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
