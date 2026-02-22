@@ -8,7 +8,7 @@ on:
   pull_request:
 
 jobs:
-  build-greek:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
@@ -33,5 +33,5 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: greek-fonts
+          name: built-fonts
           path: fonts/
