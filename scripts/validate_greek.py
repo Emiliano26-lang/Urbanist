@@ -3,7 +3,7 @@ from fontTools.ttLib import TTFont
 
 possible_paths = [
     "fonts/ttf/Urbanist-Regular.ttf",
-    "fonts/otf/Urbanist-Black.otf",
+    "fonts/otf/Urbanist-Regular.otf",
     "fonts/variable/Urbanist[wght].ttf"
 ]
 
