@@ -1,21 +1,12 @@
-name: Build Greek Typeface
-
-on:
-  push:
-    paths:
-      - "sources/**"
-      - ".github/workflows/build-greek.yml"
-  pull_request:
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v4   # updated from v3
+        uses: actions/checkout@v4   # ✅ updated
 
       - name: Setup Python
-        uses: actions/setup-python@v5   # updated from v4
+        uses: actions/setup-python@v5   # ✅ updated
         with:
           python-version: "3.11"
 
@@ -31,7 +22,7 @@ jobs:
         run: python scripts/validate_greek.py
 
       - name: Upload artifacts
-        uses: actions/upload-artifact@v4   # updated from v3
+        uses: actions/upload-artifact@v4   # ✅ updated
         with:
           name: built-fonts
           path: fonts/
