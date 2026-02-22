@@ -12,10 +12,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4   # updated from v3
 
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5   # updated from v4
         with:
           python-version: "3.11"
 
@@ -31,7 +31,7 @@ jobs:
         run: python scripts/validate_greek.py
 
       - name: Upload artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4   # updated from v3
         with:
           name: built-fonts
           path: fonts/
