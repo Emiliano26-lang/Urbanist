@@ -1,7 +1,12 @@
+import os, sys
 from fontTools.ttLib import TTFont
-import sys
 
-font = TTFont("fonts/Urbanist-Regular.ttf")
+path = "fonts/ttf/Urbanist-Regular.ttf"
+if not os.path.exists(path):
+    print(f"❌ Font file not found at {path}")
+    sys.exit(1)
+
+font = TTFont(path)
 greek_ranges = [(0x0370, 0x03FF), (0x1F00, 0x1FFF)]
 
 missing = []
